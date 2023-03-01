@@ -12,7 +12,7 @@ const MenuOption = styled(MenuItem)`
     color: #4A4A4A;
 `;
 
-const HeaderMenu = () => {
+const HeaderMenu = ({ setOpenDrawer }) => {
   const [open, setOpen] = useState(null);
 
   const handleClose = () => {
@@ -22,6 +22,8 @@ const HeaderMenu = () => {
   const handleClick = (e) => {
     setOpen(e.currentTarget);
   };
+
+  const openDrawer = () => {};
 
   return (
     <>
@@ -41,7 +43,14 @@ const HeaderMenu = () => {
           horizontal: "right",
         }}
       >
-        <MenuOption onClick={handleClose}>Profile</MenuOption>
+        <MenuOption
+          onClick={() => {
+            handleClose();
+            setOpenDrawer(true);
+          }}
+        >
+          Profile
+        </MenuOption>
         <MenuOption onClick={handleClose}>Archived</MenuOption>
         <MenuOption onClick={handleClose}>Starred messages</MenuOption>
         <MenuOption onClick={handleClose}>Settings</MenuOption>
