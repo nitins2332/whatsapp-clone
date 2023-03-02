@@ -8,6 +8,7 @@ import jwt_decode from "jwt-decode";
 
 import { qrCodeImage } from "../../Constants/Data";
 import { AccountContext } from "../../Constext/AccountProvider";
+import { addUser } from "../../Service/Api";
 
 const Component = styled(Box)`
   display: flex;
@@ -55,10 +56,11 @@ const dialogStyle = {
 const LoginDialog = () => {
   const { setAccount } = useContext(AccountContext);
 
-  const onLoginSuccess = (res) => {
+  const onLoginSuccess = async (res) => {
     let decoded = jwt_decode(res.credential);
     console.log(decoded);
     setAccount(decoded);
+    await addUser(decoded);
   };
 
   const onLoginFailure = () => {};
