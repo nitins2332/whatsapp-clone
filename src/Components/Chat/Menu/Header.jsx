@@ -25,6 +25,7 @@ const Wrapper = styled(Box)`
     margin-left: 2px;
     padding: 8px;
     color: #000;
+    cursor: pointer;
   }
   & :first-child {
     font-size: 22px;
@@ -37,6 +38,7 @@ const Image = styled("img")({
   height: 40,
   width: 40,
   borderRadius: "50%",
+  cursor: "pointer",
 });
 
 const Header = () => {
