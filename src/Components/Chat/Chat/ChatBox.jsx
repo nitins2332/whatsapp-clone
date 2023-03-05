@@ -1,4 +1,4 @@
-import { React, useContext, useEffect } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { Box } from "@mui/material";
 
 // Component
@@ -11,13 +11,16 @@ import { getConversation } from "../../../Service/Api";
 const ChatBox = () => {
   const { person, account } = useContext(AccountContext);
 
+  const [conversation, setConversation] = useState({});
+
   useEffect(() => {
     const getConversationDetails = async () => {
       let data = await getConversation({
         senderId: account.sub,
         receiverId: person.sub,
       });
-      console.log(data);
+      // console.log(data);
+      setConversation(data);
     };
     getConversationDetails();
   }, [person.sub]);
@@ -25,7 +28,7 @@ const ChatBox = () => {
   return (
     <Box>
       <ChatHeader person={person} />
-      <Messages person={person} />
+      <Messages person={person} conversation={conversation} />
     </Box>
   );
 };
