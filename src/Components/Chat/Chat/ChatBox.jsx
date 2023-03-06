@@ -19,7 +19,7 @@ const ChatBox = () => {
         senderId: account.sub,
         receiverId: person.sub,
       });
-      // console.log(data);
+      console.log(data);
       setConversation(data);
     };
     getConversationDetails();

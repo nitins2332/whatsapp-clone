@@ -6,7 +6,7 @@ import {
   getConversation,
 } from "../Controller/Conversation-controller.js";
 
-import { newMessage } from "../Controller/Message-Controller.js";
+import { newMessage, getMessages } from "../Controller/Message-Controller.js";
 
 const route = express.Router();
 
@@ -17,5 +17,6 @@ route.post("/conversations/add", newConversation);
 route.post("/conversation/get", getConversation);
 
 route.post("/message/add", newMessage);
+route.get("/message/get/:id", getMessages);
 
 export default route;
